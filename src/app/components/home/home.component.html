@@ -25,8 +25,7 @@
         </p-tabPanel>
         <p-tabPanel header="User Progress">
             <app-add-user (userAdded)="addUserToTable($event)" class="ft-p-0"></app-add-user>
-            <p>
-            </p>
+            <app-chart [users]="users"></app-chart>
         </p-tabPanel>
     </p-tabView>
 </div>

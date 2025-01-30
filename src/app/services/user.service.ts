@@ -70,7 +70,7 @@ export class UserService {
 
   saveUsers(users: any[]): void {
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('users_key', JSON.stringify(users));
+      localStorage.setItem('users', JSON.stringify(users));
     }
   }
 }

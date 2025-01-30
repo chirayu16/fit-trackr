@@ -11,11 +11,12 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { ChartComponent } from '../chart/chart.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, AddUserComponent, TabViewModule, UserTableComponent, DropdownModule, CommonModule, FormsModule, InputTextModule, ],
+  imports: [ButtonModule, AddUserComponent, TabViewModule, UserTableComponent, DropdownModule, CommonModule, FormsModule, InputTextModule,ChartComponent ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   providers:[UserService] 
@@ -110,8 +111,6 @@ export class HomeComponent {
     }
     if(this.selectedWorkout && this.selectedWorkout !== 'All types') {
       this.filteredUsers = this.filteredUsers.filter((user) => {
-        console.log('User workout types:', user.workoutTypes);
-        console.log('Selected workout:', this.selectedWorkout);
          return user.workoutTypes.includes(this.selectedWorkout)
     });
   }

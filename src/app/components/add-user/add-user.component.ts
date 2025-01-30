@@ -108,6 +108,6 @@ export class AddUserComponent {
   
 
   showWarn() {
-    this.messageService.add({ severity: 'warn', summary: 'Warn', detail: 'Message Content' });
+    this.messageService.add({ severity: 'warn',detail: 'All fields are necessary', key: 'tc' });
   }
 }
