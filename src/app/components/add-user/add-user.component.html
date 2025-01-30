@@ -1,0 +1,60 @@
+<form [formGroup]="userForm" class="user-form-container" >
+    <p-toast></p-toast>
+    <div class="card flex justify-content ft-pb-5 ft-pl-38-px">
+        <button pButton (click)="showDialog()" label="Add User" class="add-btn"></button>
+        <p-dialog 
+        header="Add Workout" 
+        [modal]="true" 
+        [(visible)]="visible" 
+        [styleClass]="'dialog-container'"
+        [closable]="false"
+        >
+            <div class="flex align-items-center gap-3">
+                <p-floatLabel class="float-label">
+                    <input 
+                    id="username" 
+                    type="text" 
+                    pInputText 
+                    formControlName="userName"
+                    (focus)="errorMessage = false" 
+                    (input)="errorMessage = false"
+                    [ngClass]="{'custom-invalid': userForm.get('userName')?.invalid && userForm.get('userName')?.touched,'ng-dirty': userForm.get('userName')?.dirty}"
+                    class="float-label"/>
+                    <label for="username" [ngClass]="{'custom-invalid': userForm.get('userName')?.invalid && userForm.get('userName')?.touched,'ng-dirty': userForm.get('userName')?.dirty}"class="float-label">Username*</label>
+                    </p-floatLabel>
+            </div>
+            <div class="flex align-items-center gap-3">
+                    <span class="p-float-label float-label" >
+                    <p-dropdown 
+                        [options]="workoutTypes" 
+                        formControlName="selectedWorkoutType"     
+                        optionLabel="name"
+                        inputId="workoutDropdown"
+                        (focus)="errorMessage = false" 
+                        (change)="errorMessage = false"
+                        [ngClass]="{'custom-invalid': userForm.get('selectedWorkoutType')?.invalid && userForm.get('selectedWorkoutType')?.touched,'ng-dirty': userForm.get('selectedWorkoutType')?.dirty}"
+                        />         
+                    <label for="workoutDropdown" [ngClass]="{'custom-invalid': userForm.get('selectedWorkoutType')?.invalid && userForm.get('selectedWorkoutType')?.touched,'ng-dirty': userForm.get('selectedWorkoutType')?.dirty}">Select Workout*</label>
+                </span>
+            </div>
+            <div class="flex align-items-center gap-3">
+                <p-floatLabel class="float-label">
+                    <input 
+                        id="workoutMinutes" 
+                        type="number" 
+                        pInputText 
+                        formControlName="workoutMinutes"
+                        (focus)="errorMessage = false" 
+                        (input)="errorMessage = false"
+                        [ngClass]="{'custom-invalid': userForm.get('workoutMinutes')?.invalid && userForm.get('workoutMinutes')?.touched,'ng-dirty': userForm.get('workoutMinutes')?.dirty}"
+                        class="float-label"/>
+                    <label for="workoutMinutes" [ngClass]="{'custom-invalid': userForm.get('workoutMinutes')?.invalid && userForm.get('workoutMinutes')?.touched,'ng-dirty': userForm.get('workoutMinutes')?.dirty}">Workout Minutes*</label>
+                </p-floatLabel>
+            </div>
+            <div class="flex justify-content-end gap-2">
+                <p-button label="Cancel" severity="secondary" (onClick)="closeDialog()" />
+                <p-button label="Save" (onClick)="addUser()" icon="pi pi-check" label="Submit"/>
+            </div>
+        </p-dialog>
+   </div>
+</form>

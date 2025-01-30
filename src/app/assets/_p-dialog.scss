@@ -1,0 +1,109 @@
+.dialog-container {
+    @apply ft-w-450-px ft-h-380-px;
+}
+.p-dialog {
+    .p-dialog-content {
+        padding-bottom: 0px;
+    }
+}
+.p-dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+//The classes below are for validation, tried using primeng ng-invalid and ng-dirty, properties of ng-invalid are not applied, hence these classes specifically provide properties for ng-invalid.
+
+.user-form-container input.custom-invalid {
+    border: 1px solid red !important;  //applies only to input
+}
+
+.user-form-container label.custom-invalid {     //applies only to label
+    color: red !important;
+}
+
+.user-form-container .custom-invalid {    //applies only to dropdown
+    & .p-dropdown {
+        border: 1px solid red;
+    }
+}
+//end
+
+
+.user-form-container .p-inputtext:focus {  //dropdown
+    box-shadow: none;
+    border: 1px solid #3B82F6;
+}
+
+.p-float-label:focus-within > label {   //dropdown
+    color: #3B82F6;
+}
+
+.p-button {
+    @apply ft-rounded-full ft-px-4 ft-py-2 ft-transition-all ft-duration-300 ft-ease-in-out ft-shadow-md hover:ft-shadow-lg focus:ft-outline-none focus:ft-ring-2 focus:ft-ring-opacity-50;
+}
+
+// .p-button-secondary {
+//     @apply  ft-text-primary hover:ft-text-white ft-bg-inherit hover:ft-bg-red-500 ft-shadow-2xl ft-border-none
+// }
+.p-button-secondary {
+    @apply ft-text-primary hover:ft-text-white ft-bg-transparent hover:ft-bg-red-500 ft-border ft-border-primary hover:ft-border-red-500   focus:ft-ring-red-500 ;
+  }
+
+.p-dialog .p-dialog-header {
+    @apply ft-bg-slate-100
+}
+.p-dialog-content{
+    @apply ft-bg-slate-100;
+}
+.p-inputtext {
+    @apply ft-bg-slate-100;
+}
+.user-form-container .p-inputwrapper{
+    @apply ft-bg-slate-100;
+}
+.p-dropdown-panel {
+    @apply ft-bg-slate-100;
+    
+}
+
+.user-form-container .p-dropdown{
+    @apply ft-h-14 ft-w-full ft-shadow-none;
+   }
+   .p-float-label {
+       input:focus {
+         & ~ label {
+           top: 18px;
+         }
+       }
+   }
+   .p-float-label{
+     input.p-filled{
+       ~ label{
+         top: 18px;
+           }
+         } 
+     }
+     .p-float-label{
+       .p-inputwrapper-filled{
+         & ~ label {
+           top: 18px;
+         }
+       }
+     }
+     .p-float-label {
+       .p-inputwrapper-focus{
+         & ~ label {
+           top: 18px;
+         }
+       } 
+     }
+     
+   #workoutDropdown.p-inputtext{
+     @apply ft-pb-0 ft-pt-6 ft-border-none;
+   }
+   
+   .float-label .ng-dirty + label {
+     top: 18px !important;
+   }
+   

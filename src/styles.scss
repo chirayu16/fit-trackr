@@ -6,3 +6,11 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 @import "primeflex/primeflex.css";
+
+@import "../src/assets/p-tabview";
+@import "../src/assets/p-dialog";
+@import "../src/assets/p-table";
+
+body {
+    @apply ft-m-0 ft-bg-slate-100;
+}

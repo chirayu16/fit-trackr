@@ -1,0 +1,32 @@
+<div class="card" >
+    <p-tabView >
+        <p-tabPanel header="User Table">
+            <div class="container">
+                <app-add-user (userAdded)="addUserToTable($event)"></app-add-user>
+                <div class="table-container">
+                    <div class="filter-container">
+                        <input type="text" 
+                        pInputText 
+                        [(ngModel)]="searchText" 
+                        (input)="filterUsers()" 
+                        placeholder="Search users..." />   
+                        <p-dropdown 
+                        [options]="workoutTypes" 
+                        [(ngModel)]="selectedWorkout" 
+                        optionLabel="name"
+                        (onChange)="filterUsers()" 
+                        placeholder="Filter"
+                        optionValue="name" />
+ 
+                    </div>
+                    <app-user-table [users] = "filteredUsers"></app-user-table>
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="User Progress">
+            <app-add-user (userAdded)="addUserToTable($event)" class="ft-p-0"></app-add-user>
+            <p>
+            </p>
+        </p-tabPanel>
+    </p-tabView>
+</div>
