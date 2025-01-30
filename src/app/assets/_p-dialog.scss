@@ -3,13 +3,11 @@
 }
 .p-dialog {
     .p-dialog-content {
-        padding-bottom: 0px;
+        @apply ft-pb-0;
     }
 }
 .p-dialog-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    @apply ft-flex ft-flex-col ft-gap-5;
 }
 
 //The classes below are for validation, tried using primeng ng-invalid and ng-dirty, properties of ng-invalid are not applied, hence these classes specifically provide properties for ng-invalid.
@@ -31,8 +29,8 @@
 
 
 .user-form-container .p-inputtext:focus {  //dropdown
-    box-shadow: none;
-    border: 1px solid #3B82F6;
+
+    @apply ft-shadow-none ft-border ft-border-solid ft-border-primary
 }
 
 .p-float-label:focus-within > label {   //dropdown

@@ -14,9 +14,5 @@ import { CommonModule } from '@angular/common';
 export class UserTableComponent {
 @Input() users: User[] =[];
 
-ngOnInit(): void {
-  console.log(this.users);
-}
-
 
 }
