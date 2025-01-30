@@ -1,24 +1,16 @@
-<div class="card" >
-    <p-tabView >
+<div class="card">
+    <p-tabView>
         <p-tabPanel header="User Table" class="">
             <div class="container">
                 <app-add-user (userAdded)="addUserToTable($event)"></app-add-user>
-                <div class="table-container">
-                    <div class="filter-container">
-                        <input type="text" 
-                        pInputText 
-                        [(ngModel)]="searchText" 
-                        (input)="filterUsers()" 
-                        placeholder="Search users..." />   
-                        <p-dropdown 
-                        [options]="workoutTypes" 
-                        [(ngModel)]="selectedWorkout" 
-                        optionLabel="name"
-                        (onChange)="filterUsers()" 
-                        placeholder="Filter"
-                        optionValue="name" />
+                <div class="ft-flex ft-flex-col ft-gap-5 ft-mx-5 ft-p-5 ft-bg-slate-200">
+                    <div class="ft-flex ft-gap-5">
+                        <input type="text" pInputText [(ngModel)]="searchText" (input)="filterUsers()"
+                            placeholder="Search users..." />
+                        <p-dropdown [options]="workoutTypes" [(ngModel)]="selectedWorkout" optionLabel="name"
+                            (onChange)="filterUsers()" placeholder="Filter" optionValue="name" />
                     </div>
-                    <app-user-table [users] = "filteredUsers"></app-user-table>
+                    <app-user-table [users]="filteredUsers"></app-user-table>
                 </div>
             </div>
         </p-tabPanel>

@@ -3,7 +3,13 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators,  } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { User } from '../../models/user.model';
 import { WorkoutCategory } from '../../models/workout-category.model';
@@ -25,16 +31,15 @@ import { RippleModule } from 'primeng/ripple';
     FloatLabelModule,
     ReactiveFormsModule,
     ToastModule,
-    RippleModule
-  
+    RippleModule,
   ],
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.scss',
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class AddUserComponent {
   @Output() userAdded = new EventEmitter<Partial<User>>();
-  
+
   userForm: FormGroup;
   userName: string | undefined;
   workoutMinutes: number | null = null;
@@ -52,7 +57,7 @@ export class AddUserComponent {
     this.userForm = this.fb.group({
       userName: ['', Validators.required],
       workoutMinutes: [null, [Validators.required, Validators.min(1)]],
-      selectedWorkoutType: ['', Validators.required]
+      selectedWorkoutType: ['', Validators.required],
     });
   }
 
@@ -60,7 +65,7 @@ export class AddUserComponent {
     this.userForm.reset({
       userName: '',
       workoutMinutes: null,
-      selectedWorkoutType: ''
+      selectedWorkoutType: '',
     });
     this.userForm.markAsPristine();
     this.userForm.markAsUntouched();
@@ -78,36 +83,43 @@ export class AddUserComponent {
     this.userForm.reset({
       userName: '',
       workoutMinutes: null,
-      selectedWorkoutType: ''
+      selectedWorkoutType: '',
     });
     this.userForm.markAsPristine();
     this.userForm.markAsUntouched();
     this.visible = false;
   }
-  
 
   addUser() {
     if (this.userForm.valid) {
       const formValue = this.userForm.value;
       const user = {
-          userName: formValue.userName,
-          workoutMinutes: formValue.workoutMinutes,
-          workoutType: formValue.selectedWorkoutType.name 
+        userName: formValue.userName,
+        workoutMinutes: formValue.workoutMinutes,
+        workoutType: formValue.selectedWorkoutType.name,
       };
       this.userAdded.emit(user);
-      this.messageService.add({ severity: 'success', detail: `${user.userName}'s workout added successfully!`, key: 'tr' });
+      this.messageService.add({
+        severity: 'success',
+        detail: `${user.userName}'s workout added successfully!`,
+        key: 'tr',
+      });
       this.closeDialog();
     } else {
-      this.errorMessage = true; 
+      this.errorMessage = true;
       this.userForm.markAllAsTouched();
-      
+
       if (this.errorMessage) {
         this.showWarn();
       }
     }
   }
-  
+
   showWarn() {
-    this.messageService.add({ severity: 'warn',detail: 'All fields are necessary', key: 'tr' });
+    this.messageService.add({
+      severity: 'warn',
+      detail: 'All fields are necessary',
+      key: 'tr',
+    });
   }
 }

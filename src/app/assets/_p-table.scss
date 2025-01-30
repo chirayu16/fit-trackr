@@ -1,9 +1,9 @@
-.p-datatable .p-datatable-thead > tr > th{
+.p-datatable .p-datatable-thead>tr>th {
     @apply ft-bg-slate-100 ft-border-primary;
-    
+
 }
 
-.p-datatable .p-datatable-tbody > tr >td {
+.p-datatable .p-datatable-tbody>tr>td {
     @apply ft-bg-inherit ft-border-primary;
 }
 

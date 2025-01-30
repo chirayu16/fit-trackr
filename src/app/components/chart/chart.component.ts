@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, SimpleChanges, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table';
 import { User } from '../../models/user.model';
@@ -9,16 +16,13 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   standalone: true,
   imports: [ChartModule, TableModule, CommonModule],
   templateUrl: './chart.component.html',
-  styleUrl: './chart.component.scss'
+  styleUrl: './chart.component.scss',
 })
 export class ChartComponent implements OnInit {
   @Input() users: User[] = [];
   selectedUser: User | null = null;
   chartData: any;
   chartOptions: any;
-  basicData: any;
-  basicOptions: any;
-  fruits: string[] = ['Apple', 'Banana', 'Cherry'];
   usernames: string[] = [];
   previousSelection: User | null = null;
 
@@ -34,7 +38,6 @@ export class ChartComponent implements OnInit {
       this.setupChartOptions();
     }
   }
-  
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['users']) {
@@ -52,8 +55,6 @@ export class ChartComponent implements OnInit {
   }
 
   onUserSelect(event: any) {
-    console.log("Selection Change Event: ", event);
-  
     if (!event) {
       if (this.previousSelection) {
         this.selectedUser = this.previousSelection;
@@ -62,7 +63,7 @@ export class ChartComponent implements OnInit {
       this.selectedUser = event;
       this.previousSelection = event;
     }
-  
+
     this.updateChart();
   }
 
@@ -70,7 +71,7 @@ export class ChartComponent implements OnInit {
     if (!this.selectedUser) return;
 
     const workoutData = new Map<string, number>();
-    this.selectedUser.workoutsData.forEach(workout => {
+    this.selectedUser.workoutsData.forEach((workout) => {
       const current = workoutData.get(workout.workoutType) || 0;
       workoutData.set(workout.workoutType, current + workout.workoutMinutes);
     });
@@ -83,9 +84,9 @@ export class ChartComponent implements OnInit {
           data: Array.from(workoutData.values()),
           backgroundColor: ['rgba(54, 162, 235, 0.2)'],
           borderColor: ['rgb(54, 162, 235)'],
-          borderWidth: 1
-        }
-      ]
+          borderWidth: 1,
+        },
+      ],
     };
   }
 
@@ -93,43 +94,45 @@ export class ChartComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       const documentStyle = getComputedStyle(document.documentElement);
       const textColor = documentStyle.getPropertyValue('--text-color');
-      const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+      const textColorSecondary = documentStyle.getPropertyValue(
+        '--text-color-secondary'
+      );
       const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
       this.chartOptions = {
         plugins: {
           legend: {
             labels: {
-              color: textColor
-            }
-          }
+              color: textColor,
+            },
+          },
         },
         scales: {
           y: {
             beginAtZero: true,
             ticks: {
-              color: textColorSecondary
+              color: textColorSecondary,
             },
             grid: {
               color: surfaceBorder,
-              drawBorder: false
+              drawBorder: false,
             },
             title: {
               display: true,
               text: 'Minutes',
-              color: textColorSecondary
-            }
+              color: textColorSecondary,
+            },
           },
           x: {
             ticks: {
-              color: textColorSecondary
+              color: textColorSecondary,
             },
             grid: {
               color: surfaceBorder,
-              drawBorder: false
-            }
-          }
-        }
+              drawBorder: false,
+            },
+          },
+        },
       };
     }
   }

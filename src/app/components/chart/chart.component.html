@@ -1,30 +1,24 @@
-<div class="container">
-    <div class="table-container">
-      <p-table 
-        [value]="users" 
-        [tableStyle]="{}"
-        selectionMode="single" 
-        [(selection)]="selectedUser"
-        (selectionChange)="onUserSelect($event)"
-        >
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Username</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-user>
-          <tr 
-          [pSelectableRow]="user" 
-          [ngClass]="{ 'disabled-row': user.userName === selectedUser?.userName }"
+<div class="ft-flex ft-gap-8 ft-px-8 ft-pt-8 ft-bg-slate-200">
+  <div class="ft-w-60">
+    <p-table [value]="users" [tableStyle]="{}" selectionMode="single" [(selection)]="selectedUser"
+      (selectionChange)="onUserSelect($event)">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Username</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr [pSelectableRow]="user"
+          [ngClass]="{ 'ft-pointer-events-none ft-opacity-60': user.userName === selectedUser?.userName }"
           (click)="user.userName !== selectedUser?.userName && onUserSelect(user)">
           <td>{{ user.userName }}</td>
-      </tr>
-        </ng-template>
-      </p-table>
-    </div>
-    
-    <div class="chart-container" *ngIf="selectedUser">
-        <h3 class="chart-title">{{ selectedUser.userName }}'s Workout</h3>
-      <p-chart type="bar" [data]="chartData" [options]="chartOptions" />
-    </div>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
+
+  <div class="ft-flex-grow ft-bg-slate-100" *ngIf="selectedUser">
+    <h3 class="ft-mb-4 ft-text-xl ft-font-bold ft-pl-12">{{ selectedUser.userName }}'s Workout</h3>
+    <p-chart type="bar" [data]="chartData" [options]="chartOptions" />
+  </div>
+</div>
