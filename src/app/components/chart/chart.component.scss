@@ -12,3 +12,7 @@
 .chart-title {
     @apply ft-mb-4 ft-text-xl ft-font-bold ft-pl-12;
   }
+.disabled-row {
+    pointer-events: none;
+    opacity: 0.6;
+}

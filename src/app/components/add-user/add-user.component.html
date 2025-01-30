@@ -1,5 +1,5 @@
 <form [formGroup]="userForm" class="user-form-container" >
-    <p-toast position="top-center" key="tc"/>
+    <p-toast position="top-right" key="tr"/>
     <div class="card flex justify-content ft-pb-5 ft-pl-38-px">
         <button pButton (click)="showDialog()" label="Add User" class="add-btn"></button>
         <p-dialog 
@@ -46,6 +46,7 @@
                         formControlName="workoutMinutes"
                         (focus)="errorMessage = false" 
                         (input)="errorMessage = false"
+                        [min]="1"
                         [ngClass]="{'custom-invalid': userForm.get('workoutMinutes')?.invalid && userForm.get('workoutMinutes')?.touched,'ng-dirty': userForm.get('workoutMinutes')?.dirty}"
                         class="float-label"/>
                     <label for="workoutMinutes" [ngClass]="{'custom-invalid': userForm.get('workoutMinutes')?.invalid && userForm.get('workoutMinutes')?.touched,'ng-dirty': userForm.get('workoutMinutes')?.dirty}">Workout Minutes*</label>
