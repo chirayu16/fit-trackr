@@ -105,3 +105,10 @@
      top: 18px !important;
    }
    
+   .p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled).p-focus {
+    @apply ft-text-blue-600;
+   }
+
+   .p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled).p-focus {
+    background: rgba(59, 130, 246, 0.24);
+   }
