@@ -8,7 +8,7 @@ import { User } from '../models/user.model';
 export class UserService {
   private readonly DEFAULT_USERS: User[] = [
     {
-      userName: 'John',
+      userName: 'Chirayu ',
       workoutTypes: ['Swimming', 'Yoga'],
       totalWorkouts: 2,
       workoutMinutes: 90,
@@ -18,22 +18,22 @@ export class UserService {
       ],
     },
     {
-      userName: 'Emma',
-      workoutTypes: ['Swimming', 'Running'],
+      userName: 'Ayush',
+      workoutTypes: ['Yoga', 'Running'],
       totalWorkouts: 2,
       workoutMinutes: 120,
       workoutsData: [
-        { workoutType: 'Swimming', workoutMinutes: 60 },
+        { workoutType: 'Yoga', workoutMinutes: 60 },
         { workoutType: 'Running', workoutMinutes: 60 },
       ],
     },
     {
-      userName: 'Michael',
-      workoutTypes: ['Yoga', 'Swimming'],
+      userName: 'Elon',
+      workoutTypes: ['Running', 'Swimming'],
       totalWorkouts: 2,
       workoutMinutes: 75,
       workoutsData: [
-        { workoutType: 'Yoga', workoutMinutes: 30 },
+        { workoutType: 'Running', workoutMinutes: 30 },
         { workoutType: 'Swimming', workoutMinutes: 45 },
       ],
     },
