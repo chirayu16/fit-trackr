@@ -1,0 +1,43 @@
+.p-tabview-nav {
+    display: flex; 
+    justify-content: space-between; 
+    padding: 0;
+    width: 100%;
+}
+
+.p-tabview-nav li {
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+li.p-tabview-ink-bar {
+    display: none;
+} 
+
+.p-tabview-nav-link {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+}
+
+.p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
+    background: none;
+    border-color: transparent;
+}
+
+.p-tabview .p-tabview-nav {
+    @apply ft-bg-slate-100
+}
+
+
+.p-tabview .p-tabview-nav .p-tabview-nav-link {
+    @apply ft-bg-slate-100;
+
+}
+
+.p-tabview .p-tabview-panels {
+    @apply ft-bg-slate-100;
+}

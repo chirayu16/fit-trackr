@@ -1,0 +1,16 @@
+.p-datatable .p-datatable-thead > tr > th{
+    @apply ft-bg-slate-100 ft-border-primary;
+    
+}
+
+.p-datatable .p-datatable-tbody > tr >td {
+    @apply ft-bg-slate-100 ft-border-primary;
+}
+
+.p-paginator {
+    @apply ft-bg-slate-100;
+}
+
+.p-dropdown {
+    @apply ft-bg-slate-100;
+}
