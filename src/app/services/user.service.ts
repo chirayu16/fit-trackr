@@ -8,7 +8,7 @@ import { User } from '../models/user.model';
 export class UserService {
   private readonly DEFAULT_USERS: User[] = [
     {
-      userName: 'Chirayu ',
+      userName: 'Chirayu',
       workoutTypes: ['Swimming', 'Yoga'],
       totalWorkouts: 2,
       workoutMinutes: 90,
