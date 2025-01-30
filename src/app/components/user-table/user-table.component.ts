@@ -7,12 +7,10 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-user-table',
   standalone: true,
-  imports: [PaginatorModule, TableModule, CommonModule ],
+  imports: [PaginatorModule, TableModule, CommonModule],
   templateUrl: './user-table.component.html',
-  styleUrl: './user-table.component.scss'
+  styleUrl: './user-table.component.scss',
 })
 export class UserTableComponent {
-@Input() users: User[] =[];
-
-
+  @Input() users: User[] = [];
 }

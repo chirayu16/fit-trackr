@@ -1,31 +1,21 @@
 .p-tabview-nav {
-    display: flex; 
-    justify-content: space-between; 
-    padding: 0;
-    width: 100%;
+    @apply ft-flex ft-justify-between ft-p-0 ft-w-full;
 }
 
 .p-tabview-nav li {
-    flex: 1; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+    @apply ft-flex ft-flex-1 ft-justify-between ft-align-middle;
 }
 
 li.p-tabview-ink-bar {
-    display: none;
-} 
+    @apply ft-hidden;
+}
 
 .p-tabview-nav-link {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 12px;
+    @apply ft-flex ft-justify-center ft-w-full ft-p-3
 }
 
 .p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
-    background: none;
-    border-color: transparent;
+    @apply ft-bg-none ft-border-transparent;
 }
 
 .p-tabview .p-tabview-nav {

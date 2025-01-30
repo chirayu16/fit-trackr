@@ -1,4 +1,4 @@
 export interface WorkoutEntry {
-    workoutType: 'Swimming' | 'Yoga' | 'Running';
-    workoutMinutes: number;
+  workoutType: 'Swimming' | 'Yoga' | 'Running';
+  workoutMinutes: number;
 }
