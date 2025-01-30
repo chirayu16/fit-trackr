@@ -20,18 +20,21 @@ export class ChartComponent implements OnInit {
   basicOptions: any;
   fruits: string[] = ['Apple', 'Banana', 'Cherry'];
   usernames: string[] = [];
+  previousSelection: User | null = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
     if (this.users.length > 0) {
       this.selectedUser = this.users[0];
+      this.previousSelection = this.selectedUser; // Store initial selection
       this.updateChart();
     }
     if (isPlatformBrowser(this.platformId)) {
       this.setupChartOptions();
     }
   }
+  
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['users']) {
@@ -49,13 +52,23 @@ export class ChartComponent implements OnInit {
   }
 
   onUserSelect(event: any) {
+    console.log("Selection Change Event: ", event);
+  
+    if (!event) {
+      if (this.previousSelection) {
+        this.selectedUser = this.previousSelection;
+      }
+    } else {
+      this.selectedUser = event;
+      this.previousSelection = event;
+    }
+  
     this.updateChart();
   }
 
   private updateChart() {
     if (!this.selectedUser) return;
 
-    // Create a map to aggregate minutes by workout type
     const workoutData = new Map<string, number>();
     this.selectedUser.workoutsData.forEach(workout => {
       const current = workoutData.get(workout.workoutType) || 0;

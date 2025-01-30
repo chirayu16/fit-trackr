@@ -79,7 +79,10 @@ export class HomeComponent {
         existingUser.workoutTypes.push(newWorkout.workoutType)
       }
       
-      this.users = [...this.users];
+      this.users = this.users.filter(u => u !== existingUser);
+      this.users.unshift(existingUser);
+      this.users = [...this.users]; 
+
       this.selectedUser = existingUser.userName;
     }
     else {

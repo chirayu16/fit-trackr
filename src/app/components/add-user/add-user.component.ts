@@ -92,9 +92,10 @@ export class AddUserComponent {
       const user = {
           userName: formValue.userName,
           workoutMinutes: formValue.workoutMinutes,
-          workoutType: formValue.selectedWorkoutType.name // Transform here
+          workoutType: formValue.selectedWorkoutType.name 
       };
       this.userAdded.emit(user);
+      this.messageService.add({ severity: 'success', detail: `${user.userName}'s workout added successfully!`, key: 'tr' });
       this.closeDialog();
     } else {
       this.errorMessage = true; 
@@ -106,8 +107,7 @@ export class AddUserComponent {
     }
   }
   
-
   showWarn() {
-    this.messageService.add({ severity: 'warn',detail: 'All fields are necessary', key: 'tc' });
+    this.messageService.add({ severity: 'warn',detail: 'All fields are necessary', key: 'tr' });
   }
 }

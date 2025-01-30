@@ -13,9 +13,12 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-user>
-          <tr [pSelectableRow]="user">
-            <td>{{ user.userName }}</td>
-          </tr>
+          <tr 
+          [pSelectableRow]="user" 
+          [ngClass]="{ 'disabled-row': user.userName === selectedUser?.userName }"
+          (click)="user.userName !== selectedUser?.userName && onUserSelect(user)">
+          <td>{{ user.userName }}</td>
+      </tr>
         </ng-template>
       </p-table>
     </div>
