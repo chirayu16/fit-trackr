@@ -6,9 +6,10 @@
             [rows]="5"
             [tableStyle]="{ 'min-width': '50rem' }"
             [rowsPerPageOptions]="[5, 10, 20]"
+            emptyMessage="No data found for your search"
         >
             <ng-template pTemplate="header">
-                <tr class="hover:ft-bg-slate-400">
+                <tr class="">
                     <th style="width:25%">Username</th>
                     <th style="width:25%">Workouts</th>
                     <th style="width:25%">Number of Workouts</th>
@@ -17,7 +18,7 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-user>
-                <tr>
+                <tr class="ft-bg-slate-100 hover:ft-bg-slate-200">
                     <td>{{ user.userName }}</td>
                     <td>
                         {{ user.workoutTypes.join(', ') }}
@@ -25,6 +26,13 @@
                     <td>{{ user.totalWorkouts }}</td>
                     <td>{{ user.workoutMinutes }}</td>
     
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="4" class="text-center p-4">
+                        No data found for your search
+                    </td>
                 </tr>
             </ng-template>
         </p-table>

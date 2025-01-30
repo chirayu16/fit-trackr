@@ -4,7 +4,7 @@
 }
 
 .p-datatable .p-datatable-tbody > tr >td {
-    @apply ft-bg-slate-100 ft-border-primary;
+    @apply ft-bg-inherit ft-border-primary;
 }
 
 .p-paginator {
@@ -13,4 +13,23 @@
 
 .p-dropdown {
     @apply ft-bg-slate-100;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+    @apply ft-bg-slate-200;
+}
+
+.p-paginator .p-paginator-first:not(.p-disabled):not(.p-highlight):hover,
+.p-paginator .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover,
+.p-paginator .p-paginator-next:not(.p-disabled):not(.p-highlight):hover,
+.p-paginator .p-paginator-last:not(.p-disabled):not(.p-highlight):hover {
+    @apply ft-bg-slate-200;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+    @apply ft-bg-slate-200;
+}
+
+.p-inputtext:enabled:focus {
+    @apply ft-shadow-none;
 }
