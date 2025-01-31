@@ -31,14 +31,3 @@ li.p-tabview-ink-bar {
 .p-tabview .p-tabview-panels {
     @apply ft-bg-slate-100 ;
 }
-
-// .p-tabview-panel {
-//     opacity: 0;
-//   transform: translateY(10px);
-//   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-// }
-
-// .p-tabview-panel.p-tabview-panel-active {
-//     opacity: 1;
-//     transform: translateY(0);
-// }

@@ -73,13 +73,13 @@ export class HomeComponent {
     );
 
     if (existingUser) {
-      //userExits, check for same workout
+      //userExists, check for same workout
       const existingUserWorkout = existingUser.workoutsData.find(
         (workout) => workout.workoutType === newWorkout.workoutType
       );
 
       if (existingUserWorkout) {
-        //workouttype exits
+        //workouttype exists
         existingUserWorkout.workoutMinutes += newWorkout.workoutMinutes;
       } else {
         existingUser.workoutsData.push(newWorkout);
