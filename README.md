@@ -1,28 +1,90 @@
-# FitTrackr
+Fit-Trackr🤸‍♂️
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
+Fit-Trackr is a web application designed to monitor and analyze fitness routines, allowing users to log, filter, and track their progress in detail.
 
-## Development server
+## ✨Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Add User:** Add user details including username, workout duration, and workout type.
+- **Filter Workouts:** Filter and search workouts by username and workout type.
+- **View Progress:** See detailed workout progress for each user.
+- **Pagination:** Navigate through users with pagination.
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Adding a Workout 💪
 
-## Build
+1. Click the "Add User" button
+2. Fill in the user details in the form
+3. Submit to save the user details.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Filtering Workouts 🔍
 
-## Running unit tests
+1. Use the search bar to filter by username.
+2. Use the dropdown to filter by workout type.
+3. Updates are reflected instantly.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Viewing User Progress 📈
 
-## Running end-to-end tests
+1. On the "User Progress" section, click a user's name.
+2. Interact with the charts to view detailed statistics.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+USER TABLE
+![image]()
 
-## Further help
+USER PROGRESS
+![image]()
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-"# fit-trackr" 
+ADD WORKOUT
+![image]()
+
+## 🧪 Test Coverage
+
+### Overall Test Coverage
+![image]()
+
+### Component-Level Coverage
+
+#### Add User Component Tests
+![image]()
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: [Angular](https://angular.io/) (Angular 18)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) for modern, utility-first styling
+- **UI Components**: [PrimeNG](https://primeng.org/) with PrimeIcons for rich UI components
+- **Charts**: Charts.js for workout visualization
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (v18.x)
+- npm (v9.x or higher)
+- Angular CLI (`npm install -g @angular/cli`)
+
+
+### 🚀Run Locally
+
+1. Clone the repository:
+
+   ```bash
+      git clone https://github.com/chirayu16/fit-trackr.git
+      cd fit-trackr
+   ```
+
+2. Install dependencies
+
+```bash
+   npm install
+```
+
+3. Start the development server
+
+```bash
+   ng serve
+```
+
+4. Open your browser and navigate to:
+
+```
+    http://localhost:4200
+```
