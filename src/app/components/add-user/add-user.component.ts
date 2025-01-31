@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
+import { NewWorkoutEntry } from '../../models/new-workout.model';
 
 @Component({
   selector: 'app-add-user',
@@ -38,7 +39,7 @@ import { RippleModule } from 'primeng/ripple';
   providers: [MessageService],
 })
 export class AddUserComponent {
-  @Output() userAdded = new EventEmitter<Partial<User>>();
+  @Output() userAdded = new EventEmitter<NewWorkoutEntry>();
 
   userForm: FormGroup;
   userName: string | undefined;
@@ -108,10 +109,7 @@ export class AddUserComponent {
     } else {
       this.errorMessage = true;
       this.userForm.markAllAsTouched();
-
-      if (this.errorMessage) {
-        this.showWarn();
-      }
+      this.showWarn();
     }
   }
 
