@@ -29,7 +29,7 @@ Fit-Trackr is a web application designed to monitor and analyze fitness routines
 2. Interact with the charts to view detailed statistics.
 
 USER TABLE
-![image]()
+![image](src/assets/images/usertable.png)
 
 USER PROGRESS
 ![image]()
