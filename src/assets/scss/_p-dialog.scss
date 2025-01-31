@@ -12,36 +12,30 @@
   @apply ft-flex ft-flex-col ft-gap-5;
 }
 
-//The classes below are for validation, tried using primeng ng-invalid and ng-dirty, properties of ng-invalid are not applied, hence these classes specifically provide properties for ng-invalid.
 
 .user-form-container input.custom-invalid {
-  border: 1px solid red !important; //applies only to input
+  border: 1px solid red !important; 
 }
 
 .user-form-container label.custom-invalid {
-  //applies only to label
   color: red !important;
 }
 
 .user-form-container .custom-invalid {
 
-  //applies only to dropdown
   & .p-dropdown {
     border: 1px solid red;
   }
 }
 
-//end
 
 
 .user-form-container .p-inputtext:focus {
-  //dropdown
 
   @apply ft-shadow-none ft-border ft-border-solid ft-border-primary
 }
 
 .p-float-label:focus-within>label {
-  //dropdown
   color: #3B82F6;
 }
 

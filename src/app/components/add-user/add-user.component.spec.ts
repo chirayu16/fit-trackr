@@ -8,47 +8,50 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AddUserComponent', () => {
   let component: AddUserComponent;
   let fixture: ComponentFixture<AddUserComponent>;
-  let messageService: MessageService;
+  let messageService: jasmine.SpyObj<MessageService>;
 
   beforeEach(async () => {
+    messageService = jasmine.createSpyObj('MessageService', ['add']);
+
     await TestBed.configureTestingModule({
-        imports: [
-            ReactiveFormsModule,
-            DialogModule,
-            ButtonModule,
-            InputTextModule,
-            DropdownModule,
-            ToastModule,
-            BrowserAnimationsModule,
-        ],
-        providers: [
-            FormBuilder,
-            { provide: MessageService, useValue: jasmine.createSpyObj('MessageService', ['add']) }
-        ],
+      imports: [
+        ReactiveFormsModule,
+        DialogModule,
+        ButtonModule,
+        InputTextModule,
+        DropdownModule,
+        ToastModule,
+        BrowserAnimationsModule,
+        AddUserComponent,
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
-    messageService = TestBed.inject(MessageService);
     fixture = TestBed.createComponent(AddUserComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-});
+    const realMessageService =
+      fixture.debugElement.injector.get(MessageService);
+    realMessageService.add = messageService.add;
 
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize with empty form', () => {
-    expect(component.userForm.get('userName')?.value).toBe('');
-    expect(component.userForm.get('workoutMinutes')?.value).toBeNull();
-    expect(component.userForm.get('selectedWorkoutType')?.value).toBe('');
-  });
+  describe('Form Initialization', () => {
+    it('should initialize with an empty form', () => {
+      expect(component.userForm.get('userName')?.value).toBe('');
+      expect(component.userForm.get('workoutMinutes')?.value).toBeNull();
+      expect(component.userForm.get('selectedWorkoutType')?.value).toBe('');
+    });
 
-  describe('Form Validation', () => {
     it('should be invalid when empty', () => {
       expect(component.userForm.valid).toBeFalsy();
     });
@@ -88,6 +91,8 @@ describe('AddUserComponent', () => {
       expect(component.userForm.get('userName')?.value).toBe('');
       expect(component.userForm.get('workoutMinutes')?.value).toBeNull();
       expect(component.userForm.get('selectedWorkoutType')?.value).toBe('');
+      expect(component.userForm.pristine).toBeTrue();
+      expect(component.userForm.untouched).toBeTrue();
     });
 
     it('should close dialog and reset form when closeDialog is called', () => {
@@ -104,13 +109,14 @@ describe('AddUserComponent', () => {
       expect(component.userForm.get('userName')?.value).toBe('');
       expect(component.userForm.get('workoutMinutes')?.value).toBeNull();
       expect(component.userForm.get('selectedWorkoutType')?.value).toBe('');
+      expect(component.userForm.pristine).toBeTrue();
+      expect(component.userForm.untouched).toBeTrue();
     });
   });
 
   describe('Add User Operation', () => {
     it('should emit user data and show success message when form is valid', () => {
       spyOn(component.userAdded, 'emit');
-      spyOn(messageService, 'add').and.callThrough(); // Ensure spy calls the real function
 
       component.userForm.patchValue({
         userName: 'John Doe',
@@ -126,18 +132,16 @@ describe('AddUserComponent', () => {
         workoutType: 'Running',
       });
 
-      expect(messageService.add).toHaveBeenCalledWith(jasmine.objectContaining({
+      expect(messageService.add).toHaveBeenCalledWith({
         severity: 'success',
         detail: "John Doe's workout added successfully!",
         key: 'tr',
-      }));
+      });
 
       expect(component.visible).toBeFalsy();
     });
 
-    it('should show warning message when form is invalid', () => {
-      spyOn(messageService, 'add').and.callThrough();
-
+    it('should show warning message and mark fields as touched when form is invalid', () => {
       component.userForm.patchValue({
         userName: '',
         workoutMinutes: null,
@@ -146,18 +150,28 @@ describe('AddUserComponent', () => {
 
       component.addUser();
 
-      expect(messageService.add).toHaveBeenCalledWith(jasmine.objectContaining({
+      expect(component.errorMessage).toBeTrue();
+      expect(component.userForm.touched).toBeTrue();
+      expect(messageService.add).toHaveBeenCalledWith({
         severity: 'warn',
         detail: 'All fields are necessary',
         key: 'tr',
-      }));
+      });
+    });
 
-      expect(component.visible).toBeTruthy();
+    it('should show warning message when showWarn is called directly', () => {
+      component.showWarn();
+
+      expect(messageService.add).toHaveBeenCalledWith({
+        severity: 'warn',
+        detail: 'All fields are necessary',
+        key: 'tr',
+      });
     });
   });
 
   describe('Reset Operation', () => {
-    it('should reset all form fields when resetForm is called', () => {
+    it('should reset all form fields and state when resetForm is called', () => {
       component.userName = 'Test';
       component.workoutMinutes = 45;
       component.selectedWorkoutType = 'Running';

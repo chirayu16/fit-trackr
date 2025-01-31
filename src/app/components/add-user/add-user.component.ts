@@ -78,6 +78,7 @@ export class AddUserComponent {
     this.workoutMinutes = null;
     this.selectedWorkoutType = '';
     this.submitted = false;
+    this.errorMessage = false;
   }
 
   closeDialog() {
