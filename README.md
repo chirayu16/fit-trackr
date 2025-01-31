@@ -29,23 +29,38 @@ Fit-Trackr is a web application designed to monitor and analyze fitness routines
 2. Interact with the charts to view detailed statistics.
 
 USER TABLE
+
 ![image](src/assets/images/usertable.png)
 
 USER PROGRESS
-![image]()
+
+![image](src/assets/images/userprogress.png)
 
 ADD WORKOUT
-![image]()
+
+![image](src/assets/images/adduser.png)
 
 ## 🧪 Test Coverage
 
 ### Overall Test Coverage
-![image]()
+
+![image](src/assets/images/codecoverage.png)
 
 ### Component-Level Coverage
 
 #### Add User Component Tests
-![image]()
+
+![image](src/assets/images/add-user1.png)
+
+![image](src/assets/images/add-user2.png)
+
+#### User Service Tests
+
+![image](src/assets/images/service1.png)
+
+![image](src/assets/images/service2.png)
+
+
 
 ## 🛠️ Tech Stack
 
@@ -66,10 +81,10 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
 
-   ```bash
-      git clone https://github.com/chirayu16/fit-trackr.git
-      cd fit-trackr
-   ```
+```bash
+    git clone https://github.com/chirayu16/fit-trackr.git
+    cd fit-trackr
+```
 
 2. Install dependencies
 
