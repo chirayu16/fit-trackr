@@ -32,10 +32,8 @@ import { ChartComponent } from '../chart/chart.component';
   providers: [UserService],
 })
 export class HomeComponent {
-  users: User[] = []; //to store new user
-  filteredUsers: User[] = []; //to store final operated user
-  userNameList: string[] = [];
-  selectedUser: string = '';
+  users: User[] = [];
+  filteredUsers: User[] = [];
   workoutTypes: WorkoutCategory[] = [
     { name: 'All types', code: 'All types' },
     { name: 'Yoga', code: 'Yoga' },
@@ -52,8 +50,6 @@ export class HomeComponent {
     if (savedUsers && savedUsers.length > 0) {
       this.users = savedUsers;
       this.filteredUsers = [...this.users];
-      this.userNameList = this.users?.map((user) => user.userName);
-      this.selectedUser = this.userNameList[0];
     }
   }
 
@@ -95,7 +91,6 @@ export class HomeComponent {
       this.users.unshift(existingUser);
       this.users = [...this.users];
 
-      this.selectedUser = existingUser.userName;
     } else {
       const newUser = {
         userName: user.userName,
@@ -106,8 +101,6 @@ export class HomeComponent {
       };
       this.users = [newUser, ...this.users];
 
-      this.userNameList.unshift(newUser.userName);
-      this.selectedUser = newUser.userName;
     }
 
     this.filterUsers();

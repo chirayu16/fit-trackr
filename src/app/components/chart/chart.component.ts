@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, SimpleChanges, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table';
 import { User } from '../../models/user.model';
@@ -16,15 +23,12 @@ export class ChartComponent implements OnInit {
   selectedUser: User | null = null;
   chartData: any;
   chartOptions: any;
-  usernames: string[] = [];
-  previousSelection: User | null = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
     if (this.users.length > 0) {
       this.selectedUser = this.users[0];
-      this.previousSelection = this.selectedUser;
       this.updateChart();
     }
     if (isPlatformBrowser(this.platformId)) {
@@ -35,43 +39,16 @@ export class ChartComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['users']) {
       const currentUsers: User[] = changes['users'].currentValue || [];
-      const previousUsers: User[] = changes['users'].previousValue || [];
 
-      if (!previousUsers || previousUsers.length === 0) {
+      if (currentUsers.length > 0) {
         this.selectedUser = currentUsers[0];
-        this.updateChart();
-        return;
-      }
-
-      if (this.selectedUser) {
-        const updatedUser = currentUsers.find(
-          (user: User) => user.userName === this.selectedUser?.userName
-        );
-
-        if (updatedUser) {
-          this.selectedUser = updatedUser;
-        } else if (currentUsers.length > previousUsers.length) {
-          this.selectedUser = currentUsers[0];
-        }
-      } else if (currentUsers.length > 0) {
-        this.selectedUser = currentUsers[0];
-      }
-
-      if (this.selectedUser) {
         this.updateChart();
       }
     }
   }
 
   onUserSelect(event: User | null): void {
-    if (!event) {
-      if (this.previousSelection) {
-        this.selectedUser = this.previousSelection;
-      }
-    } else {
-      this.selectedUser = event;
-      this.previousSelection = event;
-    }
+    this.selectedUser = event;
     this.updateChart();
   }
 
